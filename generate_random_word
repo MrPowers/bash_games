@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Generates a random word from /usr/share/dict/words
+
+file=/usr/share/dict/words
+num_words=$( cat $file | wc -l )
+word_index=$( jot -r 1  1 $num_words )
+random_word=$( sed -n $word_index'p' < $file )
+echo $random_word
