@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# This is a number guessing game
+# How many times does it take to guess a number between 1 and 20
+
+num=$(( (RANDOM % 20)  + 1 ))
+guesses="0"
+echo "Guess a number between 1 and 20"
+read guess
+
+while true; do
+  if [ $guess -gt $num ]; then
+    echo "the answer is lower"
+  elif [ $guess -lt $num ]; then
+    echo "the answer is higher"
+  else
+    echo "Correct!"
+    ((guesses += 1))
+    echo "It took you $guesses guesses"
+    break
+  fi
+  ((guesses += 1))
+  read guess
+done
+
